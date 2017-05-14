@@ -2,6 +2,7 @@
 //-----------------------------------------------------------------------------
 // Constants
 const BACKGROUND_COLOR = 'black';
+const NET_COLOR = 'white';
 
 const PADDLE_COLOR = 'white';
 const PADDLE_HEIGHT = 100;
@@ -87,15 +88,15 @@ var draw = function() {
         canvasContext.fill();
     }
 
-    colorRect(0, 0, canvas.width, canvas.height, 'black');
+    colorRect(0, 0, canvas.width, canvas.height, BACKGROUND_COLOR);
 
     // scores
-    canvasContext.fillStyle = 'white'
+    canvasContext.fillStyle = SCORE_COLOR
     canvasContext.fillText(player1.score, 100, 100);
     canvasContext.fillText(player2.score, canvas.width - 100, 100);
 
     if (showWinningScreen) {
-        canvasContext.fillStyle = 'white'
+        canvasContext.fillStyle = SCORE_COLOR
         canvasContext.fillText('click to continue...', 350, 500);
         if (player1.score >= WINNING_SCORE) {
             canvasContext.fillText("You Won!", 350, 200);
@@ -107,17 +108,17 @@ var draw = function() {
     }
 
     // paddles
-    colorRect(0, player1.paddleY, PADDLE_THICKNESS, PADDLE_HEIGHT, 'white');
+    colorRect(0, player1.paddleY, PADDLE_THICKNESS, PADDLE_HEIGHT, PADDLE_COLOR);
     colorRect(canvas.width - PADDLE_THICKNESS, player2.paddleY,
-            PADDLE_THICKNESS, PADDLE_HEIGHT, 'white');
+            PADDLE_THICKNESS, PADDLE_HEIGHT, PADDLE_COLOR);
 
     // net
     for (var i=10; i < canvas.height; i+=40) {
-        colorRect(canvas.width/2 - 1, i, 2, 20, 'white');
+        colorRect(canvas.width/2 - 1, i, 2, 20, NET_COLOR);
     }
 
     // ball
-    colorCircle(ball.x, ball.y, BALL_RADIUS, 'white');
+    colorCircle(ball.x, ball.y, BALL_RADIUS, BALL_COLOR);
 }
 
 //-----------------------------------------------------------------------------
